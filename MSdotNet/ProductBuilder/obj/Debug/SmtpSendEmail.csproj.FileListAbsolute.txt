@@ -1,0 +1,1 @@
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\SmtpSendEmail.csprojResolveAssemblyReference.cache

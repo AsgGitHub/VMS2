@@ -1,0 +1,9 @@
+P:\Projects\EIVMS40ProductBuilder\Debug\ProductBuilder\ImportComponents.exe.config
+P:\Projects\EIVMS40ProductBuilder\Debug\ProductBuilder\ImportComponents.exe
+P:\Projects\EIVMS40ProductBuilder\Debug\ProductBuilder\ImportComponents.pdb
+P:\Projects\EIVMS40ProductBuilder\VMS\Source\MSdotNet\ProductBuilder\obj\Debug\ImportComponents.csprojResolveAssemblyReference.cache
+P:\Projects\EIVMS40ProductBuilder\VMS\Source\MSdotNet\ProductBuilder\obj\Debug\ImportComponents.exe
+P:\Projects\EIVMS40ProductBuilder\VMS\Source\MSdotNet\ProductBuilder\obj\Debug\ImportComponents.pdb
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\ImportComponents.csprojResolveAssemblyReference.cache
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\ImportComponents.exe
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\ImportComponents.pdb

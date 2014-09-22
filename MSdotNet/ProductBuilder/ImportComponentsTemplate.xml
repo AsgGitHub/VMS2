@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<!-- ******************************************************************
+ ****** Copyright (c) 1995-2013 Allen Systems Group, Inc.  All rights reserved.
+ **********************************************************************
+ ******$Workfile:   ImportComponentsTemplate.xml  $
+ ****** $Archive:   I:\Archives\XML\1\ImportComponentsTemplate.x~l  $
+ ******$Revision:   1.3  $
+ ******  $Author:   KOFORNAG  $
+ ******    $Date:   24 Apr 2007 10:23:08  $
+ ****** $Modtime:   24 Apr 2007 10:23:48  $
+ ******     $Log:   I:\Archives\XML\1\ImportComponentsTemplate.x~l  $
+ ******
+ ******   Rev 1.3   24 Apr 2007 10:23:08   KOFORNAG
+ ******   Merge of Project EIComponentImportsWithZip
+ ******
+ ******   Rev 1.2   05 Mar 2007 09:43:08   KOFORNAG
+ ******   Merge of Project EIBuildImportsUpdate
+ ******
+ ******   Rev 1.1   14 Feb 2007 09:54:54   KOFORNAG
+ ******   Merge of Project EIBranchProjectsBI
+ ******
+ ******   Rev 1.0   20 Jan 2007 14:08:40   TGALASSO
+ ******   Initialize Archive
+ ******  $Endlog$
+ ****************************************************************** -->
+<!-- ****************** Sample Import Manifest ************************
+
+sourceProduct, sourceVersion, sourcePlatform = component (VMS product) to import from.
+sourceBranchOrTrunkName = name of the build number or branch to import from, or DEVELOP.
+source filename = name of the zip file to import from "q:\disk images" of the sourceProduct
+destination directory = the directory where the files will be extracted; files will be extracted in 
+                        a seperate directory named after the zip file; from example below: licensingapi-1.0-B01.zip
+                        will be extracted to q:\components\licensingapi-1.0-B01\
+                        Note: To import\extract to the default components directory, q:\components\<component name minus extension>,
+                              leave out the destination element.  
+
+<imports version="3">
+    <import sourceProduct="authen" sourceVersion="1.0" sourcePlatform="w32" sourceBranchOrTrunkName="B01">
+        <source filename="licensingapi-1.0-B01.zip" />
+        <destination directory="components\" />
+    </import>
+</imports>
+         
+*********************************************************************** -->
+
+<imports version="3">
+</imports>

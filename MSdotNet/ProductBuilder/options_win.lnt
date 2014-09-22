@@ -1,0 +1,15 @@
+-iq:\c
+-iq:\cpp
+-iq:\h
+-iq:\hh
+-iq:\hpp
+-iq:\VENDORS\netscape\include
+-iq:\vendors\ApacheXMLParser\xerces-c-src1_3_0\src
+-iq:\vendors\ApacheXMLParser\xerces-c_2_5_0-windows_nt-msvc_60\include
+-iC:\"Program Files"\"Microsoft Visual Studio"\VC98\atl\include
+-iC:\"Program Files"\"Microsoft Visual Studio"\VC98\mfc\include
+-iC:\"Program Files"\"Microsoft Visual Studio"\VC98\include
+-iQ:\VENDORS\AdobePdfLib\headers
+-iQ:\Vendors\WinSDKStatsWrapper
+-d_WINDOWS
+-dSYS_WINNT

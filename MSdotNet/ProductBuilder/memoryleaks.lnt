@@ -1,0 +1,9 @@
+-w0 	// no messages (except for fatal errors)
+-e*	// no errors, especially to disable error 322, which aborts processing.  Error 7 catches it.
++e7     // enables message 7 (Unable to open include file)
++e265	// enables message 265 (internal error)
++e423 	// enables message 423 (creation of memory leak in assignment to variable)
++e424 	// enables message 424 (inappropriate deallocation)
++e429 	// enables message 429 (custodial pointer has not been freed or returned)
++e672 	// enables message 672 (possible memory leak in assignment to pointer)
++e673 	// enables message 673 (possible inappropriate deallocation for data)

@@ -1,0 +1,124 @@
+// ----------------------------------------------------------------------------
+//
+// SigningTool.js: client-side script for use with the automated JAR and CAB signer.
+//
+// Usage:
+//
+//   signtool.js signcode  outputFile testCert(true|false) logFile [securityParam]
+//
+//   signtool.js signtool  outputFile testCert(true|false) logFile inputPath [signingScript]
+//
+//   signtool.js jarsigner outputFile testCert(true|false) logFile
+//
+// The first argument is signType, valid values are  signcode | signtool | jarsigner
+//
+// outputFile refers to the CAB or JAR to be output by SigningTool.  In the case of signcode and jarsigner, 
+//   it is also the location of the input JAR or CAB file. The path to outputFile must be fully qualified.
+//
+// testCert (true|false): If false, a production certificate will be used to sign the CAB or JAR file.
+//
+// logFile: The path to logFile must be fully qualified.
+//
+// inputPath (signtool only): fully qualified path to the directory containing files to be JARred by signtool.  
+//
+// signingScript (signtool only, optional): fully qualified path to a script to be used by signtool with the -i option.  
+//
+// securityParam (signcode only, optional): the argument that will be passed through to the -jp option of signcode.
+//
+// ----------------------------------------------------------------------------
+
+var SigningToolClientPath = "P:\\ProductBuilder\\tools\\signing\\SigningClient.exe";
+//var SigningToolClientPath = "P:\\PROJECTS\\EIVMSDotnetSigningTool\\bin\\Debug\\SigningClient.exe";
+
+var Servers = new Array("WXPPRODBUILD10");
+
+
+var fso, shell, logFileName, commandLineArgs;
+
+var ioForReading = 1; 
+var ioForAppending = 8;
+
+function logMessage( msg ) {
+    try {
+        var date = new Date();
+        var logFile = fso.OpenTextFile( logFileName, ioForAppending, true);
+        logFile.WriteLine( "[" + date.toString() + "] " + msg );
+        logFile.WriteLine();
+        logFile.Close(); // We must always close the file, otherwise SigningClient can't write to it.
+    }
+    catch (x) { }
+}
+
+
+try {
+    fso = new ActiveXObject("Scripting.FileSystemObject");
+    shell = new ActiveXObject("WScript.Shell");  
+    
+    var args = WScript.Arguments;
+    var commandLineArgs = "";
+    for (i = 0; i < args.length; i++) {
+        commandLineArgs += ( " " + args(i) );
+    }
+
+    var args = WScript.Arguments;
+    if (args.length < 4) {
+        throw "Invalid command line arguments - at least 4 args expected.";
+    }
+
+    logFileName = args(3);
+    var logFileFolder = fso.GetParentFolderName(logFileName);
+    if (logFileFolder == "") {
+        throw "Invalid log file name: " + logFileName + ": full-qualified path required.";
+    }
+    
+    if ( !fso.FolderExists(logFileFolder) ) fso.CreateFolder(logFileFolder);
+    
+    logMessage("SigningTool starting: arguments: " + commandLineArgs);
+}
+catch (e) {
+    var msg = "ERROR at startup: ";
+    if ( typeof(e) == "object" ) {
+        msg += e.description 
+    }
+    else {
+        msg += e;
+    }
+    
+    WScript.Echo( msg );
+    WScript.Quit( 1 );
+}
+    
+
+var success = false;
+for (i = 0; i < Servers.length; i++) {
+    var serverName = Servers[i];
+
+    try {
+        logMessage("Performing signing on " + serverName );
+        
+        var commandLine = SigningToolClientPath + " " + serverName + " " + commandLineArgs;
+
+        var exitCode = shell.Run(commandLine, 0, true);
+        
+        if (exitCode != 0) {
+            logMessage("Signing on " + serverName + " failed, exit code = " + exitCode );
+            continue;
+        }
+        
+        success = true;
+        break;
+    }
+    catch (ex) {
+        logMessage("Signing on " + serverName + " failed: EXCEPTION: " + ex.description );
+        continue;
+    }
+}
+
+  
+var finalExitCode = ( success ? 0 : 1 );
+var msg = ( success ? "Signing complete." : "SIGNING FAILED." );
+
+logMessage( msg );
+WScript.Echo( msg );
+
+WScript.Quit( finalExitCode );

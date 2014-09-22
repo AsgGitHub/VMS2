@@ -1,0 +1,190 @@
+#!/usr/bin/bash
+#make_product.src
+
+
+#--------------------------------------------------------------------------
+# timestamp
+#--------------------------------------------------------------------------
+echo Started building $P_PRODUCT `date +' %m/%d/%Y %r'` >> $BLD_LOG  2>&1
+
+
+#--------------------------------------------------------------------------
+# set build library path
+#--------------------------------------------------------------------------
+export LD_LIBRARY_PATH=.:$TARGETROOT/bin:$ODBC_HOME/lib:$ORACLE_HOME/lib
+#oracle lib no longer needed?
+# for AIX use LIBPATH instead of LD_LIBRARY_PATH
+if [ "$P_PLATFORM" = "aix" ] ; then
+  export LIBPATH=.:$TARGETROOT/bin:$ODBC_HOME/lib
+fi
+# for ZOS use LIBPATH instead of LD_LIBRARY_PATH
+if [ "$P_PLATFORM" = "zos" ] ; then
+  export LIBPATH=.:$TARGETROOT/bin
+fi
+
+#--------------------------------------------------------------------------
+# verify object, binary and log directories
+#--------------------------------------------------------------------------
+echo Verifying target obj Directory in $TARGETROOT >>  $BLD_LOG  2>&1
+if [ ! -d $TARGETROOT/obj ]; then 
+  mkdir -p $TARGETROOT/obj
+fi
+
+echo Verifying Target bin Directory in $TARGETROOT >>  $BLD_LOG  2>&1
+if [ ! -d $TARGETROOT/bin ]; then 
+  mkdir -p  $TARGETROOT/bin
+fi
+
+echo Verifying Target log Directory in $TARGETROOT >>  $BLD_LOG  2>&1
+if [ ! -d $TARGETROOT/log ]; then 
+  mkdir -p  $TARGETROOT/log
+fi
+
+
+#--------------------------------------------------------------------------
+# Clean up old build
+#--------------------------------------------------------------------------
+if [ "$P_CLEAN_FLAG" = "clean" ]; then 
+  echo Cleaning up old objects, shared libraries, executables and log files >>  $BLD_LOG  2>&1
+  rm -rf $TARGETROOT/obj/*
+  rm -rf $TARGETROOT/bin/*
+  rm -rf $TARGETROOT/lib/*
+  rm -rf $TARGETROOT/log/*
+fi
+
+#--------------------------------------------------------------------------
+echo Copying third-party shared libraries  >> $BLD_LOG  2>&1
+#--------------------------------------------------------------------------
+
+if [ "$P_PLATFORM" = "aix" ]; then 
+  echo Copying custom libCstd shared library  >> $BLD_LOG  2>&1
+  cp -p $VENDORS_PATH/libcstd/libC.a $TARGETROOT/bin
+fi
+if [ "$P_CODEBASE" = "rsystems" ]; then 
+  # NOTE: res2cat MUST be in the PATH otherwise compilation will break for catalog files
+  cp -p ${BUILD_TOOLS_ROOT}/utils/res2cat $TARGETROOT/bin
+fi  
+
+
+#--------------------------------------------------------------------------
+echo Copying Adobe shared libraries  >> $BLD_LOG  2>&1
+#--------------------------------------------------------------------------
+cp -p $ADOBE_PATH/*.so                   $TARGETROOT/bin
+
+#--------------------------------------------------------------------------
+echo Copying ImageGear shared libraries  >> $BLD_LOG  2>&1
+#--------------------------------------------------------------------------
+cp -p $IMAGE_GEAR_PATH/libImageGear.so   $TARGETROOT/bin
+cp -p $IMAGE_GEAR_PATH/gear.dat          $TARGETROOT/bin
+
+#--------------------------------------------------------------------------
+echo Copying Lincoln shared libraries  >> $BLD_LOG  2>&1
+#--------------------------------------------------------------------------
+cp -p $LINCOLN_PATH/EPFaxApi.so          $TARGETROOT/bin
+cp -p $LINCOLN_PATH/LincJet.so           $TARGETROOT/bin
+
+
+if [ "$P_PRODUCT" = "vdrnet" ] && [ "$P_CODEBASE" = "develop" ]; then 
+  #--------------------------------------------------------------------------
+  echo Copying SAP shared libraries  >> $BLD_LOG  2>&1
+  #--------------------------------------------------------------------------
+  cp -p $SAPRFC_PATH/*                      $TARGETROOT/bin
+fi
+
+
+#--------------------------------------------------------------------------
+# Checking for project overlays
+#--------------------------------------------------------------------------
+if [ ! "$P_PROJECT_DIR" = "none" ]; then 
+
+  #--------------------------------------------------------------------------
+  echo Overlaying codebase source files with project source >> $BLD_LOG  2>&1
+  #--------------------------------------------------------------------------
+ 
+  # check for c, cpp, h, hh, hpp, rc, idl, make for now
+  #--------------------------------------- 
+  if [ -f ${P_PROJECT_DIR}/*.c ]; then
+    cp -p ${P_PROJECT_DIR}/*.c ${BLDBASE}/c 
+  fi  
+  if [ -f ${P_PROJECT_DIR}/*.cpp ]; then
+    cp -p ${P_PROJECT_DIR}/*.cpp ${BLDBASE}/cpp 
+  fi  
+  if [ -f ${P_PROJECT_DIR}/*.h ]; then
+    cp -p ${P_PROJECT_DIR}/*.h ${BLDBASE}/h
+  fi  
+  if [ -f ${P_PROJECT_DIR}/*.hh ]; then
+    cp -p ${P_PROJECT_DIR}/*.hh ${BLDBASE}/hh
+  fi 
+  if [ -f ${P_PROJECT_DIR}/*.hpp ]; then
+    cp -p ${P_PROJECT_DIR}/*.hpp ${BLDBASE}/hpp
+  fi 
+  if [ -f ${P_PROJECT_DIR}/*.rc ]; then
+    cp -p ${P_PROJECT_DIR}/*.rc ${BLDBASE}/rc
+  fi 
+  if [ -f ${P_PROJECT_DIR}/*.idl ]; then
+    cp -p ${P_PROJECT_DIR}/*.idl ${BLDBASE}/idl
+  fi  
+  if [ -f ${P_PROJECT_DIR}/*.make ]; then
+    cp -p ${P_PROJECT_DIR}/*.make ${BLDBASE}/make 
+  fi  
+  
+fi
+
+#----------------------------------------------------------------------
+# Set complist
+#----------------------------------------------------------------------
+
+COMPLIST_FILE=txt/partial_complist.txt
+CLEAN_FILE=$COMPLIST_FILE
+if [ "$P_RELINK_FLAG" = "relink" ]; then
+  COMPLIST_FILE=txt/complist_${P_PRODUCT}_${P_PLATFORM}.txt
+fi
+if [ ! -f ${BLDBASE}/txt/partial_complist.txt ]; then
+  COMPLIST_FILE=txt/complist_${P_PRODUCT}_${P_PLATFORM}.txt
+  CLEAN_FILE=$COMPLIST_FILE
+fi
+
+if [ ! -f ${BLDBASE}/${COMPLIST_FILE} ]; then 
+  echo Complist file, ${BLDBASE}/${COMPLIST_FILE}, is missing! >> $BLD_LOG  2>&1
+  BUILD_RC=2
+fi
+
+#--------------------------------------------------------------------------
+echo making ${P_PRODUCT} ...  >> $BLD_LOG 2>&1
+#--------------------------------------------------------------------------
+#clean object directories
+while read CLEANOBJ
+do
+  CLEANNAME=${CLEANOBJ%.*}
+  echo Cleaning $CLEANNAME                        >> $BLD_LOG 2>&1
+  rm -rf $TARGETROOT/obj/$CLEANNAME               2>> $BLD_LOG
+done  < ${BLDBASE}/${CLEAN_FILE}
+
+
+
+# read complist, copy make file into corresp. obj dir, do make and write output to log
+while read COMP
+do
+  COMPNAME=${COMP%.*}
+  echo Building $COMPNAME                        >> $BLD_LOG 2>&1
+  mkdir -p $TARGETROOT/obj/$COMPNAME 
+  cd $TARGETROOT/obj/$COMPNAME 
+  cp $BLDBASE/make/$COMP .
+  echo make $OPTSTR $DBGSTR -f $COMP             >> $BLD_LOG 2>&1
+  make $OPTSTR DBG="${DBGSTR}" -f $COMP           > $TARGETROOT/log/$COMPNAME.out 2> $TARGETROOT/log/$COMPNAME.err
+  if [ $? != 0 ]; then
+      echo $COMP                                 >> $BLD_ERR_LOG
+      BUILD_RC=1
+  fi
+done  < ${BLDBASE}/${COMPLIST_FILE}
+
+# Note: TARGETDIR is defined in parse_make_args.sh
+
+
+#--------------------------------------------------------------------------
+# timestamp
+#--------------------------------------------------------------------------
+echo Finished building $P_PRODUCT `date +' %m/%d/%Y %r'` >> $BLD_LOG 2>&1
+
+
+

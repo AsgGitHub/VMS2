@@ -1,0 +1,8 @@
+P:\Projects\EIVMS40ProductBuilder\Debug\ProductBuilder\CheckBuild.exe
+P:\Projects\EIVMS40ProductBuilder\Debug\ProductBuilder\CheckBuild.pdb
+P:\Projects\EIVMS40ProductBuilder\VMS\Source\MSdotNet\ProductBuilder\obj\Debug\CheckBuild.csprojResolveAssemblyReference.cache
+P:\Projects\EIVMS40ProductBuilder\VMS\Source\MSdotNet\ProductBuilder\obj\Debug\CheckBuild.exe
+P:\Projects\EIVMS40ProductBuilder\VMS\Source\MSdotNet\ProductBuilder\obj\Debug\CheckBuild.pdb
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\CheckBuild.csprojResolveAssemblyReference.cache
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\CheckBuild.exe
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\CheckBuild.pdb

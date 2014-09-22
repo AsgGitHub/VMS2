@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ******************************************************************
+ ****** Copyright (c) 1995-2013 Allen Systems Group, Inc.  All rights reserved.
+ **********************************************************************
+ ******$Workfile:   ProductBuildDataSet.resx  $
+ ****** $Archive:   P:\ARCHIVES\RESX\1\ProductBuildDataSet.r~sx  $
+ ******$Revision:   1.6  $
+ ******  $Author:   TGALASSO  $
+ ******    $Date:   04 May 2005 17:28:06  $
+ ****** $Modtime:   04 May 2005 17:27:50  $
+ ******     $Log:   P:\ARCHIVES\RESX\1\ProductBuildDataSet.r~sx  $
+   
+      Rev 1.6   04 May 2005 17:28:06   TGALASSO
+   Merge of Project FILBUnderscoreExt
+   
+      Rev 1.5   Oct 17 2003 16:15:50   RRUSSELL
+   Merge of Project EILIBBLD-Misc01
+   
+      Rev 1.4   Jul 24 2003 17:32:50   RRUSSELL
+   Merge of Project EIPRDBLDGUI-Misc01
+   
+      Rev 1.3   Apr 18 2003 16:36:38   RRUSSELL
+   Merge of Project EIPRDBLD-IntegrateWithLB2
+   
+      Rev 1.2   Mar 21 2003 18:47:04   RRUSSELL
+   Merge of Project EILIBBLD-IntegrateWithPB2
+   
+      Rev 1.1   11 Mar 2003 13:47:36   RRUSSELL
+   Merge of Project EILIBBLD-IntegrateWithPB
+   
+      Rev 1.0   18 Feb 2003 15:42:00   RRUSSELL
+   Initialize Archive
+ ******  $Endlog$
+ ****************************************************************** -->
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3102.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3102.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+</root>

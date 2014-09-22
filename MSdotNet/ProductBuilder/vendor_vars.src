@@ -1,0 +1,117 @@
+#!/usr/bin/bash
+# vendor_vars.src
+
+
+# Vendors location
+#----------------------------
+export VENDORS_PATH=${BLDBASE}/vendors
+
+if [ ! -d $VENDORS_PATH ]; then
+  echo missing or invalid directory: $VENDORS_PATH
+fi
+
+
+# Oracle      
+#----------------------------
+# claim is that these are no longer needed
+#export ORACLE_HOME=/u01/app/oracle/product/9.0.1
+#if [ "$P_CODEBASE" = "rsystems" ] ; then
+#  export ORACLE_HOME=/opt/u01/app/oracle/product/8.1.5
+#fi
+
+
+# Apache XML Parser
+#----------------------------
+if [ "$P_PLATFORM" = "sun" ] || [ "$P_PLATFORM" = "w32" ] || [ "$P_PLATFORM" = "lnx" ]; then 
+  export XMLPARSERPATH=$VENDORS_PATH/SolApacheXMLParser/xerces-c-src1_3_0/src
+elif [ "$P_PLATFORM" = "aix" ]; then 
+  export XMLPARSERPATH=$VENDORS_PATH/AIXApacheXMLParser/xerces-c-src1_3_0/src
+elif [ "$P_PLATFORM" = "zos" ]; then
+  export XMLPARSERPATH=/usr/lpp/ixm/IBM/xml4c3_3_1/include  
+fi
+
+
+# ImageGear
+#----------------------------
+if [ "$P_PLATFORM" = "sun" ] || [ "$P_PLATFORM" = "w32" ]; then 
+  export IMAGE_GEAR_PATH=$VENDORS_PATH/ImageGear/solaris
+elif [ "$P_PLATFORM" = "aix" ]; then 
+  export IMAGE_GEAR_PATH=$VENDORS_PATH/ImageGear/aix
+elif [ "$P_PLATFORM" = "zos" ]; then 
+  # libpng is supported on zos instead of ImageGear
+  export IMAGE_GEAR_PATH=$VENDORS_PATH/ZOSLibpng
+fi
+
+
+
+# Lincoln PCL / PDF Conversion Libraries
+#----------------------------
+export LINCOLNDIR=$VENDORS_PATH/Lincoln/development/a
+if [ "$P_PLATFORM" = "sun" ] || [ "$P_PLATFORM" = "w32" ]; then 
+  export LINCOLN_PATH=$VENDORS_PATH/Lincoln/bin/solaris
+elif [ "$P_PLATFORM" = "aix" ]; then 
+  export LINCOLN_PATH=$VENDORS_PATH/Lincoln/bin/aix
+fi
+
+
+# Adobe Headers and libraries
+#----------------------------
+export ADOBE_HEADERS=$VENDORS_PATH/AdobePdfLib/headers
+if [ "$P_PLATFORM" = "sun" ] || [ "$P_PLATFORM" = "w32" ]; then 
+  export ADOBE_PATH=$VENDORS_PATH/AdobePdfLib/solaris
+elif [ "$P_PLATFORM" = "aix" ]; then 
+  export ADOBE_PATH=$VENDORS_PATH/AdobePdfLib/aix
+elif [ "$P_PLATFORM" = "lnx" ]; then 
+  export ADOBE_PATH=$VENDORS_PATH/adobefiles/APDFL6.0.0/Libs
+  export ADOBE_HEADERS=$VENDORS_PATH/adobefiles/APDFL6.0.0/Include
+fi
+
+      
+# PDFLIB_PATH
+#----------------------------
+export PDFLIB_PATH=$BLDBASE/a
+
+
+# SAPRFC_PATH
+#----------------------------
+if [ "$P_PLATFORM" = "sun" ] || [ "$P_PLATFORM" = "w32" ]; then 
+  export SAPRFC_PATH=$VENDORS_PATH/sapArchiveLinkSol
+elif [ "$P_PLATFORM" = "aix" ]; then 
+  export SAPRFC_PATH=$VENDORS_PATH/sapArchiveLinkAix
+fi
+
+
+# DataDirect4.1 ODBC Drivers
+#----------------------------
+export ODBCINI=${BUILD_TOOLS_ROOT}/utils/odbc.ini
+# export ODBC_HOME=/opt/odbcMerant40
+if [ "$P_PLATFORM" = "sun" ] || [ "$P_PLATFORM" = "w32" ] || [ "$P_PLATFORM" = "lnx" ]; then 
+  export ODBC_HOME=$VENDORS_PATH/DataDirectODBCSol
+elif [ "$P_PLATFORM" = "aix" ]; then
+  export ODBC_HOME=/opt/odbcDD41
+fi
+
+export NLSPATH=${ODBC_HOME}/locale/%L/%N
+if [ "$P_PLATFORM" = "lnx" ]; then
+  export NLSPATH=$BLDBASE/targets/%N
+fi
+
+
+# for Java
+#----------------------------
+export JAVA_HOME=/usr/java
+if [ "$P_PLATFORM" = "zos" ]; then
+  export JAVA_HOME=/usr/lpp/java/IBM/J1.3/bin
+fi
+if [ "$P_PRODUCT" = "vdrnet" ] || [ "$P_PRODUCT" = "vdrtci" ]; then
+  export JAVA_HOME=/usr/java1.4
+fi
+
+
+# Internal version of libCstd.so
+#----------------------------
+if [ "$P_CODEBASE" = "rsystems" ] ; then
+  export LIBCSTD_HOME=${BUILD_TOOLS_ROOT}/libcstd
+else
+  unset LIBCSTD_HOME
+fi

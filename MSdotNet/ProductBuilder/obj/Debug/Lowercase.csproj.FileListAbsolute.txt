@@ -1,0 +1,5 @@
+E:\work_rye\Debug\ProductBuilder\Lowercase.exe.config
+E:\work_rye\Debug\ProductBuilder\Lowercase.exe
+E:\work_rye\Debug\ProductBuilder\Lowercase.pdb
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\Lowercase.exe
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\Lowercase.pdb

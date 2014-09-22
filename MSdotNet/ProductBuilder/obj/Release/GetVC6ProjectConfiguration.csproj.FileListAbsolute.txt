@@ -1,0 +1,4 @@
+E:\work_rye\Release\ProductBuilder\GetVC6ProjectConfiguration.exe.config
+E:\work_rye\Release\ProductBuilder\GetVC6ProjectConfiguration.exe
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Release\GetVC6ProjectConfiguration.csprojResolveAssemblyReference.cache
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Release\GetVC6ProjectConfiguration.exe

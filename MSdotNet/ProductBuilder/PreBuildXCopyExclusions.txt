@@ -1,0 +1,14 @@
+.DSW
+.NCB
+.OPT
+.MAP
+.PCH
+\class_temp\
+\Disk Images\
+\source_bin.zip
+\source_txt.zip
+\bin_archives.zip
+\targets_win_bin.zip
+\targets_win_txt.zip
+\build_cfg\
+\build_temp\

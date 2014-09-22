@@ -1,0 +1,63 @@
+-- --------------------------------------------------------------------------
+-- MediaBuildDefs.txt
+--
+-- this file countains media building arguments for Mobius products
+-- format is full name (key); short name; short output path name; IS version; readme file; IPD file; ISP file
+-- delimiters should be seperated by spaces for missing or null arguments
+-- used by: RunMediaBuild.bat
+-- --------------------------------------------------------------------------
+
+
+-- ABSNET
+ABS for Networks v4_1.W32;ABSNET;ABSNET;5;absnetread.txt;absnet.ipd;absnet.isp;
+ABS for Networks v4_2.W32;ABSNET;ABSNET;5;absnetread.txt;absnet.ipd;absnet.isp;
+
+-- DDR
+DocumentDirect v2_1.W32;DDR;DDR;3;ddrread.txt;ddr.ipd; ;
+DocumentDirect v2_2.W32;DDR;DDR;5;ddrread.txt;ddr.ipd;ddr.isp;
+DocumentDirect v2_3.W32;DDR;DDR;5;ddrread.txt;ddr.ipd;ddr.isp;
+DocumentDirect v4_1.W32;DDR;DDR;5;ddrread.txt;ddr.ipd;ddr.isp;
+DocumentDirect v4_2.W32;DDR;DDR;5;ddrread.txt;ddr.ipd;ddr.isp;
+
+-- DDRAPP
+DDR Application Suite v1_1.W32;DDRAPP;DDRAPP;3;ddrapprd.txt;ddrapp.ipd; ;
+DDR Application Suite v1_2.W32;DDRAPP;DDRAPP;5;ddrapprd.txt;ddrapp.ipd;ddrapp.isp;
+DDR Application Suite v1_3.W32;DDRAPP;DDRAPP;5;ddrapprd.txt;ddrapp.ipd;ddrapp.isp;
+DDR Application Suite v4_1.W32;DDRAPP;DDRAPP;5;ddrapprd.txt;ddrapp.ipd;ddrapp.isp;
+DDR Application Suite v4_2.W32;DDRAPP;DDRAPP;5;ddrapprd.txt;ddrapp.ipd;ddrapp.isp;
+
+-- DDRINT
+DDR for the Internet v1_1.W32;DDRINT;DDRINT;3;ddriread.txt;ddrint.ipd; ;
+DDR for the Internet v1_2.W32;DDRINT;DDRINT;5;ddriread.txt;ddrint.ipd;ddrint.isp;
+DDR for the Internet v1_3.W32;DDRINT;DDRINT;5;ddriread.txt;ddrint.ipd;ddrint.isp;
+DDR for the Internet v2_0.W32;DDRINT;DDRINT;5;ddrjspw32.txt;ddrjspw32.ipd;ddrjspw32.isp;
+DDR for the Internet v2_0.SUN;DDRINT;DDRSOL;5;ddrjspsol.txt;ddrjspsol.ipd;ddrjspsol.isp;
+DDR for the Internet v2_1.W32;DDRINT;DDRINT;0;ddrjspw32.txt;ddrjspw32.ipd;no_isp.isp;
+DDR for the Internet v2_1.SUN;DDRINT;DDRSOL;0;ddrjspsol.txt;ddrjspsol.ipd;no_isp.isp;
+DDR for the Internet v2_1.AIX;DDRINT;DDRAIX;0;ddrintaix.txt;ddrjspaix.ipd;no_isp.isp;
+DDR for the Internet v2_1.ZOS;DDRINT;DDRZOS;0;ddrintzos.txt;ddrjspzos.ipd;no_isp.isp;
+DDR for the Internet v4_2.W32;DDRINT;DDRINT;0;ddrjspw32.txt;ddrjspw32.ipd;no_isp.isp;
+DDR for the Internet v4_2.SUN;DDRINT;DDRSOL;0;ddrjspsol.txt;ddrjspsol.ipd;no_isp.isp;
+DDR for the Internet v4_2.AIX;DDRINT;DDRAIX;0;ddrintaix.txt;ddrjspaix.ipd;no_isp.isp;
+DDR for the Internet v4_2.ZOS;DDRINT;DDRZOS;0;ddrintzos.txt;ddrjspzos.ipd;no_isp.isp;
+
+-- ESAV
+e-Search and View v1_2.W32;ESAV;ESAV;5;esavread.txt;esav.ipd;esav.isp;
+e-Search and View v1_3.W32;ESAV;ESAV;5;esavread.txt;esav.ipd;esav.isp;
+e-Search and View v2_0.W32;ESAV;ESAV;5;esavjsp_w.txt;esavjsp_w.ipd;esavjsp_w.isp;
+e-Search and View v2_0.SUN;ESAV;ESASOL;5;esavjsp_s.txt;esavjsp_s.ipd;esavjsp_w.isp;
+e-Search and View v2_1.W32;ESAV;ESAV;0;esavjsp_w.txt;esavjsp_w.ipd;no_isp.isp;
+e-Search and View v2_1.SUN;ESAV;ESASOL;0;esavjsp_s.txt;esavjsp_s.ipd;no_isp.isp;
+e-Search and View v4_2.W32;ESAV;ESAV;0;esavjsp_w.txt;esavjsp_w.ipd;no_isp.isp;
+e-Search and View v4_2.SUN;ESAV;ESASOL;0;esavjsp_s.txt;esavjsp_s.ipd;no_isp.isp;
+
+-- VDRNET
+ViewDirect for Networks v3_1.W32;VDRNET;VDRNET;3;vdrnread.txt;vdrnet.ipd; ;
+ViewDirect for Networks v3_2.W32;VDRNET;VDRNET;5;vdrnread.txt;vdrnet.ipd;vdrnet.isp;
+ViewDirect for Networks v3_3.W32;VDRNET;VDRNET;5;vdrnread.txt;vdrnet.ipd;vdrnet.isp;
+ViewDirect for Networks v4_1.W32;VDRNET;VDRNET;5;vdrnread.txt;vdrnet.ipd;vdrnet.isp;
+ViewDirect for Networks v4_2.W32;VDRNET;VDRNET;5;vdrnread.txt;vdrnet.ipd;vdrnet.isp;
+
+-- VDRTCI
+ViewDirect TCI v2_1.W32;VDRTCI;VDRTCI;0;vdrtread.txt;vdrtci.ipd; ;
+ViewDirect TCI v4_2.W32;VDRTCI;VDRTCI;0;vdrtread.txt;vdrtci.ipd; ;

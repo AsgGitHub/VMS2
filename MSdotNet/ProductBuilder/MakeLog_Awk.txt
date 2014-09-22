@@ -1,0 +1,58 @@
+# ----------------------------------------------------------------------------
+# File name: MakeLog.AWK
+# Author:    David Hertz
+# Purpose:   This awk script creates an error log from the Delphi MSG files.
+#
+# Usage:     GAWK -f MakeLog.AWK
+# ----------------------------------------------------------------------------
+
+BEGIN { 
+
+	if( ARGC != 2 )
+	{
+		print "Usage: GAWK -f MakeLog.AWK ErrorLogName"
+		print "   ie: GAWK -f MakeLog.AWK Error3.LOG"
+	}
+	else
+	{
+		#---------------------------------------Setup the environment.
+		msgFilePath  = "Q:\\MSG\\Delphi\\"
+		tempWorkFile = msgFilePath "MakeLog.TMP"
+		dirCmd       = "dir /B " msgFilePath "*.msg > " tempWorkFile
+	#	logFile      = "Q:\\Error3.LOG"
+		logFile      = ARGV[1]
+
+		#print "; --------------------------------------------------" > logFile
+		#print "; This file was created by MakeLog.AWK              " > logFile
+		#print "; --------------------------------------------------" > logFile
+
+		system( dirCmd ) #--- Build a list of the Delphi message files to be parsed.
+
+		while( getline msgFileName <tempWorkFile > 0 )
+		{
+			print >> logFile #Skip a line.
+
+			msgFileNameAndPath = msgFilePath msgFileName
+
+			#-------Debugging stuff
+			   #print 						                             >> logFile
+			   #print "Parsing .......................... " msgFileName >> logFile
+			   #print "msgFileNameAndPath: " msgFileNameAndPath
+
+			while( getline curLine <msgFileNameAndPath > 0 )
+			{
+				lowerCaseLine = tolower(curLine) # Ensure case insenitivity.
+
+				if( index(lowerCaseLine, "error") != 0 ||
+		   			index(lowerCaseLine, "fatal") != 0 )
+				{
+					print msgFileName " : " curLine >> logFile
+				}
+			}
+		}
+
+		system( "erase " tempWorkFile )
+	}
+}
+
+# ------------------------------------------------------------------- The End.

@@ -1,0 +1,13 @@
+-iu:\root\usr\include 
+-iu:\root\usr\java\include 
+-iu:\root\opt\SUNWspro\WS6U2\include\CC\Cstd 
+-iu:\root\opt\SUNWspro\WS6U2\include\CC 
+-iu:\root\export\home1\products\%lintprod%\%prdver%.sun\develop\c 
+-iu:\root\export\home1\products\%lintprod%\%prdver%.sun\develop\cpp 
+-iu:\root\export\home1\products\%lintprod%\%prdver%.sun\develop\h 
+-iu:\root\export\home1\products\%lintprod%\%prdver%.sun\develop\hh 
+-iu:\root\export\home1\products\%lintprod%\%prdver%.sun\develop\hpp
+-iu:\root\export\home1\products\%lintprod%\%prdver%.sun\develop\idl 
+-dSYS_SOLARIS_SPARC 
+-dMIDLCOMP
+

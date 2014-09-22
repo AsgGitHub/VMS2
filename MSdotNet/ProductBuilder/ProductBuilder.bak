@@ -1,0 +1,375 @@
+//**********************************************************************
+//***** Copyright (c) 1992-2013 Allen Systems Group, Inc.  All rights reserved.
+//**********************************************************************
+//*****$Workfile:   ProductBuilder.cmp  $
+//***** $Archive:   I:\Archives\CMP\2\ProductBuilder.c~p  $
+//*****$Revision:   2.5  $
+//*****  $Author:   shermank  $
+//*****    $Date:   25 Feb 2010 09:37:08  $
+//***** $Modtime:   25 Feb 2010 09:37:06  $
+//*****     $Log:   I:\Archives\CMP\2\ProductBuilder.c~p  $
+//*****
+//*****   Rev 2.5   25 Feb 2010 09:37:08   shermank
+//*****   Merge of Project EIVMSGenerateCopyrightNotice
+//*****
+//*****   Rev 2.4   23 Jul 2008 17:01:18   LMARGOLI
+//*****   Merge of Project EISymStoreVMS
+//*****
+//*****   Rev 2.3   18 Sep 2007 15:03:48   KOFORNAG
+//*****   Merge of Project FWEfficientBuildZipFTP
+//*****
+//*****   Rev 2.2   14 Feb 2007 09:54:54   KOFORNAG
+//*****   Merge of Project EIBranchProjectsBI
+//*****
+//*****   Rev 2.1   12 Oct 2006 16:57:22   KOFORNAG
+//*****   Merge of Project EISplitProductBuilder
+//*****
+//*****   Rev 2.0   11 Oct 2006 11:06:56   KOFORNAG
+//*****   Create Branch Revision.
+//*****
+//*****   Rev 1.58   29 Jun 2005 18:20:36   DMASKOFF
+//*****   Merge of Project EIVMSPBHandleValidationFailure2
+//*****
+//*****   Rev 1.57   17 Mar 2005 11:53:56   DMASKOFF
+//*****Merge of Project EIVMSSigntoolFailover
+//*****
+//*****   Rev 1.56   15 Nov 2004 14:19:08   NGODILO
+//*****Merge of Project FWlintfix
+//*****
+//*****   Rev 1.55   28 Oct 2004 11:11:30   DMASKOFF
+//*****Merge of Project EIVMSPBSmtpSendEmail
+//*****
+//*****   Rev 1.54   23 Sep 2004 18:07:50   KOFORNAG
+//*****Merge of Project FIPreprodPartialBuilds
+//*****
+//*****   Rev 1.53   03 Sep 2004 17:30:16   KOFORNAG
+//*****Merge of Project EILbCommandLine
+//*****
+//*****   Rev 1.52   11 Aug 2004 18:09:44   DMYASKOV
+//*****Merge of Project EIVMSProdBuilderAddDelphiCfgFile
+//*****
+//*****   Rev 1.51   30 Jul 2004 16:02:24   NGODILO
+//*****Merge of Project EWmanagelintfiles
+//*****
+//*****   Rev 1.50   Oct 17 2003 16:19:02   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc38
+//*****
+//*****   Rev 1.49   Sep 03 2003 16:48:52   RRUSSELL
+//*****Merge of Project FXVMSDependencies
+//*****
+//*****   Rev 1.48   Sep 03 2003 15:01:44   RRUSSELL
+//*****Merge of Project EXBuildHPX33
+//*****
+//*****   Rev 1.47   Aug 12 2003 16:58:08   RRUSSELL
+//*****Merge of Project EIBuildReportingSystem
+//*****
+//*****   Rev 1.46   Aug 04 2003 11:55:24   RRUSSELL
+//*****Merge of Project EIVersionManageUnixScripts
+//*****
+//*****   Rev 1.45   Jul 24 2003 18:24:50   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc33
+//*****
+//*****   Rev 1.44   Jul 21 2003 18:02:06   RRUSSELL
+//*****Merge of Project EWBuild42Products
+//*****
+//*****   Rev 1.43   Jul 01 2003 13:17:48   RRUSSELL
+//*****Merge of Project EIPRDBLD-SupportZOS
+//*****
+//*****   Rev 1.42   Jun 10 2003 17:23:14   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc31
+//*****
+//*****   Rev 1.41   Jun 03 2003 15:02:22   RRUSSELL
+//*****Merge of Project EIPRDBLD-CleanBinBuilds
+//*****
+//*****   Rev 1.40   May 01 2003 16:17:14   RRUSSELL
+//*****Merge of Project EIPRDBLD-MiscUnix
+//*****
+//*****   Rev 1.39   May 01 2003 16:14:24   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc29
+//*****
+//*****   Rev 1.38   Apr 19 2003 15:34:18   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc28
+//*****
+//*****   Rev 1.37   Apr 18 2003 16:36:38   RRUSSELL
+//*****Merge of Project EIPRDBLD-IntegrateWithLB2
+//*****
+//*****   Rev 1.36   Mar 28 2003 10:18:06   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc26
+//*****
+//*****   Rev 1.35   Mar 24 2003 10:17:16   RRUSSELL
+//*****Merge of Project EIPRDBLD-IntegrateWithLB
+//*****
+//*****   Rev 1.34   11 Mar 2003 11:58:10   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc25
+//*****
+//*****   Rev 1.33   28 Feb 2003 20:38:22   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc24
+//*****
+//*****   Rev 1.32   27 Jan 2003 15:09:24   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc22
+//*****
+//*****   Rev 1.31   20 Jan 2003 17:43:52   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc21
+//*****
+//*****   Rev 1.30   07 Jan 2003 17:53:38   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc20
+//*****
+//*****   Rev 1.29   23 Dec 2002 16:17:48   RRUSSELL
+//*****Merge of Project EIPRDBLDFixJava2
+//*****
+//*****   Rev 1.28   18 Dec 2002 13:30:12   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc18
+//*****
+//*****   Rev 1.27   02 Dec 2002 10:27:06   RRUSSELL
+//*****Merge of Project EIPRDBLD-AIXScripts
+//*****
+//*****   Rev 1.26   03 Nov 2002 17:36:06   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc15
+//*****
+//*****   Rev 1.25   07 Oct 2002 11:38:18   RRUSSELL
+//*****Merge of Project EIPRDBLD-ManageCopyriteFile
+//*****
+//*****   Rev 1.24   23 Sep 2002 10:07:28   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc12
+//*****
+//*****   Rev 1.23   03 Sep 2002 11:22:50   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc11
+//*****
+//*****   Rev 1.22   19 Aug 2002 15:01:00   RRUSSELL
+//*****Merge of Project EIPRDBLD-BuildSolaris
+//*****
+//*****   Rev 1.21   15 Aug 2002 16:23:04   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc10
+//*****
+//*****   Rev 1.20   01 Aug 2002 19:49:10   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc09
+//*****
+//*****   Rev 1.19   26 Jul 2002 15:50:52   RRUSSELL
+//*****Merge of Project FIPRDBLD-BugFix08
+//*****
+//*****   Rev 1.18   19 Jul 2002 13:21:26   RRUSSELL
+//*****Merge of Project EIPRDBLD-BuildMedia2
+//*****
+//*****   Rev 1.17   18 Jul 2002 14:30:12   RRUSSELL
+//*****Merge of Project FIPRDBLD-BugFix07
+//*****
+//*****   Rev 1.16   03 Jul 2002 14:13:42   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc07
+//*****
+//*****   Rev 1.15   02 Jul 2002 19:31:36   RRUSSELL
+//*****Merge of Project EIPRDBLD-SigningApp
+//*****
+//*****   Rev 1.14   27 Jun 2002 14:50:26   RRUSSELL
+//*****Merge of Project FIPRDBLD-BugFix06
+//*****
+//*****   Rev 1.13   26 Jun 2002 15:12:58   RRUSSELL
+//*****Merge of Project EIPRDBLD-SolarisBuild
+//*****
+//*****   Rev 1.12   13 Jun 2002 16:25:52   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc04
+//*****
+//*****   Rev 1.11   13 Jun 2002 11:08:30   RRUSSELL
+//*****Merge of Project EWManageBuildBatchFilesDot2
+//*****
+//*****   Rev 1.10   05 Jun 2002 16:40:14   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc03
+//*****
+//*****   Rev 1.9   21 May 2002 20:27:26   RRUSSELL
+//*****Merge of Project EIPRDBLD-BuildMedia
+//*****
+//*****   Rev 1.8   17 May 2002 15:16:58   RRUSSELL
+//*****Merge of Project EIPRDBLD-Misc01
+//*****
+//*****   Rev 1.7   13 May 2002 20:48:48   RRUSSELL
+//*****Merge of Project FIPRDBLD-BugFix03
+//*****
+//*****   Rev 1.6   10 May 2002 09:47:10   RRUSSELL
+//*****Merge of Project FIPRDBLD-BugFix02
+//*****
+//*****   Rev 1.5   07 May 2002 20:50:50   RRUSSELL
+//*****Merge of Project FIPRDBLD-BugFix01
+//*****
+//*****   Rev 1.4   02 May 2002 16:01:38   RRUSSELL
+//*****Merge of Project EIPRDBLD-LoggingAndJarring
+//*****
+//*****   Rev 1.3   28 Apr 2002 21:00:08   RRUSSELL
+//*****Merge of Project EIPRDBLD-BuildSolarisComponents
+//*****
+//*****   Rev 1.2   21 Apr 2002 21:22:54   RRUSSELL
+//*****Merge of Project EIPRDBLD-SupportQA2
+//*****
+//*****   Rev 1.1   20 Apr 2002 18:36:30   RRUSSELL
+//*****Merge of Project EIPRDBLD-ManageInVMS
+//*****
+//*****   Rev 1.0   15 Apr 2002 16:48:48   RRUSSELL
+//*****Initialize Archive
+//*****  $Endlog$
+//**********************************************************************
+
+TARGET=ProductBuilder.exe
+
+
+//.NET applications & class libraries
+VMS.Source.MSdotNet.ProductBuilder.ProductBuilder.sln
+VMS.Source.MSdotNet.ProductBuilder.BuildReportSummary.csproj
+VMS.Source.MSdotNet.ProductBuilder.BuildReportSummary.cs
+VMS.Source.MSdotNet.ProductBuilder.CheckBuild.csproj
+VMS.Source.MSdotNet.ProductBuilder.CheckBuild.cs
+VMS.Source.MSdotNet.ProductBuilder.GetVC6ProjectConfiguration.csproj
+VMS.Source.MSdotNet.ProductBuilder.GetVC6ProjectConfiguration.cs
+VMS.Source.MSdotNet.ProductBuilder.ProductBuilder.csproj
+VMS.Source.MSdotNet.ProductBuilder.ProductBuilder.cs
+VMS.Source.MSdotNet.ProductBuilder.ProductBuilderLibrary.csproj
+VMS.Source.MSdotNet.ProductBuilder.ProductBuild.cs
+VMS.Source.MSdotNet.ProductBuilder.LibraryInfoFile.cs
+VMS.Source.MSdotNet.ProductBuilder.Lowercase.csproj
+VMS.Source.MSdotNet.ProductBuilder.Lowercase.cs
+VMS.Source.MSdotNet.ProductBuilder.ProductBuildDataSet.cs
+VMS.Source.MSdotNet.ProductBuilder.ProductBuildDataSet.resx
+VMS.Source.MSdotNet.ProductBuilder.ProductBuilderUtil.cs
+VMS.Source.MSdotNet.ProductBuilder.ResolveComplist.csproj
+VMS.Source.MSdotNet.ProductBuilder.ResolveComplist.cs
+VMS.Source.MSdotNet.ProductBuilder.RunRemoteScript.csproj
+VMS.Source.MSdotNet.ProductBuilder.RunRemoteScript.cs
+VMS.Source.MSdotNet.ProductBuilder.SetBuildEnvironment.csproj
+VMS.Source.MSdotNet.ProductBuilder.SetBuildEnvironment.cs
+VMS.Source.MSdotNet.ProductBuilder.SetDummyPasswords.csproj
+VMS.Source.MSdotNet.ProductBuilder.SetDummyPasswords.cs
+VMS.Source.MSdotNet.ProductBuilder.TouchDirectories.csproj
+VMS.Source.MSdotNet.ProductBuilder.TouchDirectories.cs
+VMS.Source.MSdotNet.ProductBuilder.LogMsg.csproj
+VMS.Source.MSdotNet.ProductBuilder.LogMessage.cs
+VMS.Source.MSdotNet.ProductBuilder.SmtpSendEmail.cs
+VMS.Source.MSdotNet.ProductBuilder.SmtpSendEmail.csproj
+
+
+//Standard build steps
+VMS.Source.MSdotNet.ProductBuilder.BuildC4U.bat
+VMS.Source.MSdotNet.ProductBuilder.BuildDelphi.bat
+VMS.Source.MSdotNet.ProductBuilder.BuildHelp.bat
+VMS.Source.MSdotNet.ProductBuilder.BuildJavaJCD.bat
+VMS.Source.MSdotNet.ProductBuilder.BuildMedia.bat
+VMS.Source.MSdotNet.ProductBuilder.BuildVC6.bat
+VMS.Source.MSdotNet.ProductBuilder.BuildVC6_2.bat
+VMS.Source.MSdotNet.ProductBuilder.CopyUnitTestFiles.bat
+VMS.Source.MSdotNet.ProductBuilder.CopyVBTest.bat
+VMS.Source.MSdotNet.ProductBuilder.FinishUnix.bat
+VMS.Source.MSdotNet.ProductBuilder.FixBase.bat
+VMS.Source.MSdotNet.ProductBuilder.InstallProduct.bat
+VMS.Source.MSdotNet.ProductBuilder.PreBuild.bat
+VMS.Source.MSdotNet.ProductBuilder.PreBuild_2.bat
+VMS.Source.MSdotNet.ProductBuilder.PostBuild.bat
+VMS.Source.MSdotNet.ProductBuilder.SetBuildEnvironment.bat
+VMS.Source.MSdotNet.ProductBuilder.StartUnix.bat
+
+
+// Delphi build
+VMS.Source.MSdotNet.ProductBuilder.dcc32.cfg
+
+//JCDParser.exe
+VMS.Source.MSdotNet.ProductBuilder.JCDParser.csproj
+VMS.Source.MSdotNet.ProductBuilder.JCDParser.cs
+VMS.Source.MSdotNet.ProductBuilder.JCDParserResults.cs
+
+
+//LocateResourcePackages.exe
+VMS.Source.MSdotNet.ProductBuilder.LocateResourcePackages.csproj
+VMS.Source.MSdotNet.ProductBuilder.LocateResourcePackages.cs
+
+
+//Unix build scripts
+VMS.Source.MSdotNet.ProductBuilder.build_product.sh
+VMS.Source.MSdotNet.ProductBuilder.extract_mobius_product.sh
+VMS.Source.MSdotNet.ProductBuilder.make_mobius_product.sh
+VMS.Source.MSdotNet.ProductBuilder.make_product.src
+VMS.Source.MSdotNet.ProductBuilder.parse_make_args.sh
+VMS.Source.MSdotNet.ProductBuilder.post_build_steps.sh
+VMS.Source.MSdotNet.ProductBuilder.vendor_vars.src
+//top-level scripts that use managed build scripts
+VMS.Source.MSdotNet.ProductBuilder.build_product_M.sh
+VMS.Source.MSdotNet.ProductBuilder.make_mobius_product_M.sh
+
+
+//Other miscellaneous tools
+VMS.Source.MSdotNet.ProductBuilder.BreakConnections.bat
+VMS.Source.MSdotNet.ProductBuilder.BuildJarMaster.bat
+VMS.Source.MSdotNet.ProductBuilder.CallVcVars32.bat
+VMS.Source.MSdotNet.ProductBuilder.ChangeCase.java
+VMS.Source.MSdotNet.ProductBuilder.CheckProductBuild.bat
+VMS.Source.MSdotNet.ProductBuilder.comment_strip.sh
+VMS.Source.MSdotNet.ProductBuilder.CopyLibrary.bat
+VMS.Source.MSdotNet.ProductBuilder.CopyLogs.bat
+VMS.Source.MSdotNet.ProductBuilder.CopyMainLog.bat
+VMS.Source.MSdotNet.ProductBuilder.FtpBuildFile.bat
+VMS.Source.MSdotNet.ProductBuilder.idl_include_list.cpp
+VMS.Source.MSdotNet.ProductBuilder.MakeLog.bat
+VMS.Source.MSdotNet.ProductBuilder.MakeSound.bat
+VMS.Source.MSdotNet.ProductBuilder.MapQ.bat
+VMS.Source.MSdotNet.ProductBuilder.QAMediaBuild.bat
+VMS.Source.MSdotNet.ProductBuilder.RemoveOldBuildReports.bat
+VMS.Source.MSdotNet.ProductBuilder.RunMediaBuild.bat
+VMS.Source.MSdotNet.ProductBuilder.SetClassPath.bat
+VMS.Source.MSdotNet.ProductBuilder.SetReadOnly.bat
+VMS.Source.MSdotNet.ProductBuilder.SetReadWrite.bat
+VMS.Source.MSdotNet.ProductBuilder.SetUnixBuildEnvironment.bat
+VMS.Source.MSdotNet.ProductBuilder.Sleep.js
+VMS.Source.MSdotNet.ProductBuilder.CopyBinaries.bat
+VMS.Source.MSdotNet.ProductBuilder.CreateCopyrightFiling.java
+VMS.Source.MSdotNet.ProductBuilder.CreateCopyrightFiling.bat
+
+
+//New Java Build Process
+VMS.Source.MSdotNet.ProductBuilder.BuildJava.bat
+VMS.Source.MSdotNet.ProductBuilder.CopyJavaResources.bat
+VMS.Source.MSdotNet.ProductBuilder.JavaMakeTasks.bat
+VMS.Source.MSdotNet.ProductBuilder.JavaPackageSteps.bat
+VMS.Source.MSdotNet.ProductBuilder.MakeJava.bat
+
+
+//Other miscellaneous files
+VMS.Source.MSdotNet.ProductBuilder.asciizip.lst
+VMS.Source.MSdotNet.ProductBuilder.cert.zip
+VMS.Source.MSdotNet.ProductBuilder.copyrite.txt
+VMS.Source.MSdotNet.ProductBuilder.info-zip.zip
+VMS.Source.MSdotNet.ProductBuilder.MakeLog_Awk.txt
+VMS.Source.MSdotNet.ProductBuilder.MediaBuildDefs.txt
+VMS.Source.MSdotNet.ProductBuilder.PreBuildXCopyExclusions.txt
+VMS.Source.MSdotNet.ProductBuilder.PuTTY.zip
+VMS.Source.MSdotNet.ProductBuilder.zip_exclude.lst
+VMS.Source.MSdotNet.ProductBuilder.MS_Debugging_Tools.zip
+
+
+//lint
+VMS.Source.MSdotNet.ProductBuilder.lintddi.bat
+VMS.Source.MSdotNet.ProductBuilder.options_win.lnt
+VMS.Source.MSdotNet.ProductBuilder.options_sun.lnt
+VMS.Source.MSdotNet.ProductBuilder.memoryleaks.lnt
+VMS.Source.MSdotNet.ProductBuilder.std_sun.lnt
+VMS.Source.MSdotNet.ProductBuilder.std_win.lnt
+
+//app config files
+VMS.Source.MSdotNet.ProductBuilder.SetDummyPasswords.exe_config
+VMS.Source.MSdotNet.ProductBuilder.SetBuildEnvironment.exe_config
+VMS.Source.MSdotNet.ProductBuilder.ResolveComplist.exe_config
+VMS.Source.MSdotNet.ProductBuilder.ProductBuilder.exe_config
+VMS.Source.MSdotNet.ProductBuilder.Lowercase.exe_config
+VMS.Source.MSdotNet.ProductBuilder.LogMsg.exe_config
+VMS.Source.MSdotNet.ProductBuilder.GetVC6ProjectConfiguration.exe_config
+VMS.Source.MSdotNet.ProductBuilder.CheckBuild.exe_config
+VMS.Source.MSdotNet.ProductBuilder.BuildReportSummary.exe_config
+VMS.Source.MSdotNet.ProductBuilder.SmtpSendEmail.exe_config
+
+//key
+VMS.Source.MSdotNet.ProductBuilder.lbKey.snk
+
+//componentimport
+VMS.Source.MSdotNet.ProductBuilder.ImportComponents.bat
+VMS.Source.MSdotNet.ProductBuilder.ImportComponents.cs
+VMS.Source.MSdotNet.ProductBuilder.ImportComponentsTemplate.xml
+VMS.Source.MSdotNet.ProductBuilder.ImportComponents.csproj
+VMS.Source.MSdotNet.ProductBuilder.ImportComponents.exe_config
+
+//UseRemoteZip
+VMS.Source.MSdotNet.ProductBuilder.UseRemoteZip.cs
+VMS.Source.MSdotNet.ProductBuilder.UseRemoteZip.csproj
+VMS.Source.MSdotNet.ProductBuilder.UseRemoteZip.exe_config

@@ -1,0 +1,8 @@
+//  Microsoft C and Visual C++ 6.x, -si4 -sp4, lib-mfc.lnt lib-stl.lnt lib-w32.lnt lib-wnt.lnt
+//  Standard lint options
+
+
+co-msc60.lnt
+lib-mfc.lnt lib-stl.lnt lib-w32.lnt lib-wnt.lnt
+options_win.lnt  -si4 -sp4
+

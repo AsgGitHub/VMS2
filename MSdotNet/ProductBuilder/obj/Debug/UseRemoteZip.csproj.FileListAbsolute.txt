@@ -1,0 +1,5 @@
+E:\work_rye\Debug\ProductBuilder\UseRemoteZip.exe.config
+E:\work_rye\Debug\ProductBuilder\UseRemoteZip.exe
+E:\work_rye\Debug\ProductBuilder\UseRemoteZip.pdb
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\UseRemoteZip.exe
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Debug\UseRemoteZip.pdb

@@ -1,0 +1,166 @@
+//**********************************************************************
+//***** Copyright (c) 1992-2013 Allen Systems Group, Inc.  All rights reserved.
+//**********************************************************************
+//*****$Workfile$
+//***** $Archive$
+//*****$Revision$
+//*****  $Author$
+//*****    $Date$
+//***** $Modtime$
+//*****     $Log$
+//*****  $Endlog$
+//**********************************************************************
+
+
+TARGET=ProductBuilder.xxx
+
+//.NET applications & class libraries
+BuildReportSummary.cs
+BuildReportSummary.csproj
+CheckBuild.cs
+CheckBuild.csproj
+GetVC6ProjectConfiguration.cs
+GetVC6ProjectConfiguration.csproj
+ImportComponents.cs
+ImportComponents.csproj
+JCDParser.cs
+JCDParser.csproj
+JCDParserResults.cs
+LibraryInfoFile.cs
+LocateResourcePackages.cs
+LocateResourcePackages.csproj
+LogMessage.cs
+LogMsg.csproj
+Lowercase.cs
+Lowercase.csproj
+ProductBuild.cs
+ProductBuildDataSet.cs
+ProductBuilder.cs
+ProductBuilder.csproj
+ProductBuilderLibrary.csproj
+ProductBuilderUtil.cs
+ResolveComplist.cs
+ResolveComplist.csproj
+RunRemoteScript.cs
+RunRemoteScript.csproj
+SetBuildEnvironment.cs
+SetBuildEnvironment.csproj
+SetDummyPasswords.cs
+SetDummyPasswords.csproj
+SmtpSendEmail.cs
+SmtpSendEmail.csproj
+TouchDirectories.csproj
+UseRemoteZip.cs
+UseRemoteZip.csproj
+
+//Standard build steps
+BuildC4U.bat
+BuildDelphi.bat
+BuildHelp.bat
+BuildJavaJCD.bat
+BuildMedia.bat
+BuildVC6.bat
+BuildVC6_2.bat
+CopyUnitTestFiles.bat
+CopyVBTest.bat
+FinishUnix.bat
+FixBase.bat
+ImportComponents.bat
+InstallProduct.bat
+PreBuild.bat
+PreBuild_2.bat
+PostBuild.bat
+QAMediaBuild.bat
+SetBuildEnvironment.bat
+StartUnix.bat
+
+// Delphi build
+dcc32.cfg
+
+//JCDParser.exe
+JCDParser.cs
+JCDParser.csproj
+JCDParserResults.cs
+
+//LocateResourcePackages.exe
+LocateResourcePackages.cs
+LocateResourcePackages.csproj
+
+//Unix build scripts
+build_product.sh
+extract_mobius_product.sh
+make_mobius_product.sh
+make_product.src
+parse_make_args.sh
+post_build_steps.sh
+vendor_vars.src
+//top-level scripts that use managed build scripts
+build_product_M.sh
+make_mobius_product_M.sh
+
+//Other miscellaneous tools
+BreakConnections.bat
+BuildJarMaster.bat
+CallVcVars32.bat
+CheckProductBuild.bat
+comment_strip.sh
+CopyBinaries.bat
+CopyLibrary.bat
+CopyLogs.bat
+CopyMainLog.bat
+FtpBuildFile.bat
+MakeLog.bat
+MakeSound.bat
+MapQ.bat
+QAMediaBuild.bat
+RemoveOldBuildReports.bat
+SetClassPath.bat
+SetReadOnly.bat
+SetReadWrite.bat
+SetUnixBuildEnvironment.bat
+
+//New Java Build Process
+BuildJava.bat
+CopyJavaResources.bat
+JavaMakeTasks.bat
+JavaPackageSteps.bat
+MakeJava.bat
+
+//Other miscellaneous files
+asciizip.lst
+cert.zip
+copyrite.txt
+ImportComponentsTemplate.xml
+info-zip.zip
+MakeLog_Awk.txt
+MediaBuildDefs.txt
+MS_Debugging_Tools.zip
+PreBuildXCopyExclusions.txt
+PuTTY.zip
+zip_exclude.lst
+
+//lint
+lintddi.bat
+memoryleaks.lnt
+options_sun.lnt
+options_win.lnt
+std_sun.lnt
+std_win.lnt
+
+//app config files
+BuildReportSummary.exe_config
+CheckBuild.exe_config
+GetVC6ProjectConfiguration.exe_config
+ImportComponents.exe_config
+LogMsg.exe_config
+Lowercase.exe_config
+ProductBuilder.exe_config
+ResolveComplist.exe_config
+SetBuildEnvironment.exe_config
+SetDummyPasswords.exe_config
+SmtpSendEmail.exe_config
+UseRemoteZip.exe_config
+
+//key
+lbKey.snk
+

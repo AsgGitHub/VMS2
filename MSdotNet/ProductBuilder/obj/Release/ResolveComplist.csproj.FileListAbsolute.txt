@@ -1,0 +1,1 @@
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Release\ResolveComplist.csprojResolveAssemblyReference.cache

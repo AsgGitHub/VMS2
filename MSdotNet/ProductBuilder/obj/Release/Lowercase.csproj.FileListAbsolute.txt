@@ -1,0 +1,4 @@
+E:\work_rye\Release\ProductBuilder\Lowercase.exe.config
+E:\work_rye\Release\ProductBuilder\Lowercase.exe
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Release\Lowercase.csprojResolveAssemblyReference.cache
+E:\work_rye\VMS\MSdotNet\ProductBuilder\obj\Release\Lowercase.exe
